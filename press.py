@@ -1,10 +1,8 @@
 from pynput import keyboard
 import os
-
 #
 # Robot controller
 #
-
 class color:
    PURPLE = '\033[95m'
    CYAN = '\033[96m'
@@ -79,17 +77,21 @@ def on_release(key):
         # Stop listener
         return False
 
-# Collect events until released
-with keyboard.Listener(
-        on_press=on_press,
-        on_release=on_release) as listener:
-    listener.join()
+def main():
+
+    # Collect events until released
+    with keyboard.Listener(
+            on_press=on_press,
+            on_release=on_release) as listener:
+            listener.join()
 
 
-
+if __name__ == "__main__":
+    # execute only if run as a script
+    print "must be run as root"
+    print "any key to start, esc to end"
+    main()
+    
 # print ("any key to start, esc to end")
 
 
-
-
-    
