@@ -1,6 +1,10 @@
 from pynput import keyboard
 import os
 
+#
+# Robot controller
+#
+
 class color:
    PURPLE = '\033[95m'
    CYAN = '\033[96m'
