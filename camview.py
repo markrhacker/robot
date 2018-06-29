@@ -29,7 +29,7 @@ while(True):
     #---- analysis imagee ----
     print ("Analysising...")
     #img1 = cv2.imread('box.png',0)          # queryImage
-    img2 = cv2.imread('cam.jpg',0) # trainImage
+    img2 = cv2.imread('cam.jpg',1) # trainImage
     img2 = cv2.resize(img2, (256, 256)) 
     # -----------------
 
