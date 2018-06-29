@@ -1,15 +1,16 @@
 from pynput import keyboard
 import os
 import CHIP_IO.GPIO as GPIO
-from time import sleep
 
 #
 # Robot controller
 #
-
-
-RLED = "GPIO1"
-BLED = "GPIO2"
+relay1 = "GPIO1"
+relay2 = "GPIO2"
+relay3 = "GPIO3"
+relay4 = "GPIO4"
+relay5 = "GPIO5"
+relay6 = "GPIO6"
 
 #LED Set-up
 GPIO.setup(RLED, GPIO.OUT)
@@ -21,8 +22,6 @@ GPIO.output(BLED, GPIO.HIGH)
 
 GPIO.output(RLED, GPIO.LOW)
 GPIO.output(BLED, GPIO.LOW)
-
-sleep(1)
 
 GPIO.output(RLED, GPIO.HIGH)
 GPIO.output(BLED, GPIO.HIGH)

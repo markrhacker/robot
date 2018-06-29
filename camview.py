@@ -23,13 +23,12 @@ while(True):
     if (ostype):
         os.system("ffmpeg -nostats -loglevel 0 -f avfoundation -video_size 1280x720 -framerate 30 -i \"0\" -vframes 1 cam.jpg")
     else:
-        os.system("fswebcam -q cam.jpg")
+        os.system("fswebcam -q --no-banner cam.jpg")
     # -----------------
 
     #---- analysis imagee ----
     print ("Analysising...")
-    #img1 = cv2.imread('box.png',0)          # queryImage
-    img2 = cv2.imread('cam.jpg',0) # trainImage
+    img2 = cv2.imread('cam.jpg',cv2.IMREAD_COLOR) 
     img2 = cv2.resize(img2, (256, 256)) 
     # -----------------
 
