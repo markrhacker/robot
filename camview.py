@@ -1,7 +1,7 @@
 import os
 import numpy as np
 import cv2
-from matplotlib import pyplot as plt
+#from matplotlib import pyplot as plt
 import platform
 
 # --- init everything ---
@@ -23,13 +23,17 @@ while(True):
     if (ostype):
         os.system("ffmpeg -nostats -loglevel 0 -f avfoundation -video_size 1280x720 -framerate 30 -i \"0\" -vframes 1 cam.jpg")
     else:
-        os.system("fswebcam -q cam.jpg")
+        os.system("fswebcam -q --no-banner cam.jpg")
     # -----------------
 
     #---- analysis imagee ----
     print ("Analysising...")
+<<<<<<< HEAD
     #img1 = cv2.imread('box.png',0)          # queryImage
     img2 = cv2.imread('cam.jpg',1) # trainImage
+=======
+    img2 = cv2.imread('cam.jpg',cv2.IMREAD_COLOR) 
+>>>>>>> 28d1a74c4fa297b2243444b381d186a8d7a4f6dd
     img2 = cv2.resize(img2, (256, 256)) 
     # -----------------
 

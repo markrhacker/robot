@@ -1,8 +1,32 @@
 from pynput import keyboard
 import os
+import CHIP_IO.GPIO as GPIO
+
 #
 # Robot controller
 #
+relay1 = "GPIO1"
+relay2 = "GPIO2"
+relay3 = "GPIO3"
+relay4 = "GPIO4"
+relay5 = "GPIO5"
+relay6 = "GPIO6"
+
+#LED Set-up
+GPIO.setup(RLED, GPIO.OUT)
+GPIO.setup(BLED, GPIO.OUT)
+
+#LED on/off
+GPIO.output(RLED, GPIO.HIGH)
+GPIO.output(BLED, GPIO.HIGH)
+
+GPIO.output(RLED, GPIO.LOW)
+GPIO.output(BLED, GPIO.LOW)
+
+GPIO.output(RLED, GPIO.HIGH)
+GPIO.output(BLED, GPIO.HIGH)
+
+
 class color:
    PURPLE = '\033[95m'
    CYAN = '\033[96m'
