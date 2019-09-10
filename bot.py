@@ -1,11 +1,29 @@
 import cmd
+import os
+try:
+    import CHIP_IO.GPIO as GPIO
+except ImportError:
+    print "Needs to run on the CHIP"
 
 def forward(val):
+    if not(val): val = 1 
     print "Going forward",val
 
 def backward(val):
-    print "Going forward",val
+    if not(val): val = 1 
+    print "Going backward",val
 
+def left(val):
+    if not(val): val = 1 
+    print "Going left",val
+
+def right(val):
+    if not(val): val = 1 
+    print "Going right",val
+
+def speed(val):
+    if not(val): val = 1 
+    print "speed setting ",val
 
 class HelloWorld(cmd.Cmd):
     """Simple command processor example."""
@@ -25,8 +43,8 @@ class HelloWorld(cmd.Cmd):
         else:
             val = int(line)
         forward(val)
-
     def do_f(self, line):
+        """Move Forward"""
         val =1
         if line=="":
             val=1
@@ -41,7 +59,6 @@ class HelloWorld(cmd.Cmd):
         else:
             val = int(line)
         backward(val)
-
     def do_b(self, line):
         val =1
         if line=="":
@@ -50,12 +67,73 @@ class HelloWorld(cmd.Cmd):
             val = int(line)
         backward(line)
 
+    def do_right(self, line):
+        val =1
+        if line=="":
+            val=1
+        else:
+            val = int(line)
+        right(val)
+    def do_r(self, line):
+        val =1
+        if line=="":
+            val=1
+        else:
+            val = int(line)
+        right(line)
 
+    def do_left(self, line):
+        val =1
+        if line=="":
+            val=1
+        else:
+            val = int(line)
+        left(val)
+    def do_l(self, line):
+        val =1
+        if line=="":
+            val=1
+        else:
+            val = int(line)
+        left(line)
+        
+    def do_pause(self, line):
+        val =1
+        if line=="":
+            val=1
+        else:
+            val = int(line)
+        left(val)
+    def do_p(self, line):
+        val =1
+        if line=="":
+            val=1
+        else:
+            val = int(line)
+        left(line)
+     
+
+    def do_speed(self, line):
+        val =1
+        if line=="":
+            val=1
+        else:
+            val = int(line)
+        speed(line)
+
+    def do_s(self, line):
+        val =1
+        if line=="":
+            val=1
+        else:
+            val = int(line)
+        speed(line)
+    
     def do_quit(self, line):
         exit()
     
     def do_exit(self, line):
-            exit()
+        exit()
     
     def postloop(self):
         print
