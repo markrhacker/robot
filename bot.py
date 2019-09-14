@@ -5,6 +5,9 @@ try:
 except ImportError:
     print "Needs to run on the CHIP"
 
+def init():
+    
+
 def forward(val):
     if not(val): val = 1 
     print "Going forward",val
