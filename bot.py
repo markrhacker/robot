@@ -4,8 +4,6 @@ import time
 
 import CHIP_IO.GPIO as GPIO
 
-
-
 #motors
 def lhs_back_on():
     GPIO.output("GPIO2", GPIO.HIGH)
