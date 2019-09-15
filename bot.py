@@ -1,5 +1,6 @@
 import cmd
 import os
+import time
 
 import CHIP_IO.GPIO as GPIO
 
@@ -72,9 +73,9 @@ def forward(val):
     print "Going forward",val
     lhs_fwd_on()
     rhs_fwd_on()
-    sleep(1)
+    time.sleep(1)
     rhs_off()
-    lsh_off()
+    lhs_off()
 
 def backward(val):
     if not(val): val = 1 
