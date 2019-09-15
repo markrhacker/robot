@@ -205,5 +205,6 @@ class HelloWorld(cmd.Cmd):
         print
 
 if __name__ == '__main__':
+    init()
     HelloWorld().cmdloop()
     
