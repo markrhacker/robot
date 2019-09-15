@@ -1,9 +1,8 @@
 import cmd
 import os
-try:
-    import CHIP_IO.GPIO as GPIO
-except ImportError:
-    print "Needs to run on the CHIP"
+
+import CHIP_IO.GPIO as GPIO
+
 
 
 #motors
