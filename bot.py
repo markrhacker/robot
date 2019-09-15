@@ -5,13 +5,77 @@ try:
 except ImportError:
     print "Needs to run on the CHIP"
 
+
+#motors
+def lhs_back_on():
+    GPIO.output("GPIO2", GPIO.HIGH)
+    GPIO.output("GPIO4", GPIO.HIGH)
+
+def lhs_fwd_on():
+    GPIO.output("GPIO1", GPIO.HIGH)
+    GPIO.output("GPIO3", GPIO.HIGH)
+    
+def rhs_back_on():
+    GPIO.output("GPIO5", GPIO.LOW)
+    GPIO.output("GPIO7", GPIO.LOW)
+    
+def rhs_fwd_on():
+    GPIO.output("GPIO6", GPIO.LOW)
+    GPIO.output("GPIO8", GPIO.LOW)
+
+def lhs_off():
+    GPIO.output("GPIO1", GPIO.LOW)
+    GPIO.output("GPIO2", GPIO.LOW)
+    GPIO.output("GPIO3", GPIO.LOW)
+    GPIO.output("GPIO4", GPIO.LOW)
+
+def rhs_off():
+    GPIO.output("GPIO5", GPIO.LOW)
+    GPIO.output("GPIO6", GPIO.LOW)
+    GPIO.output("GPIO7", GPIO.LOW)
+    GPIO.output("GPIO8", GPIO.LOW)  
+
+def all_off():
+    GPIO.output("GPIO1", GPIO.LOW)
+    GPIO.output("GPIO2", GPIO.LOW)
+    GPIO.output("GPIO3", GPIO.LOW)
+    GPIO.output("GPIO4", GPIO.LOW)
+
+    GPIO.output("GPIO5", GPIO.LOW)
+    GPIO.output("GPIO6", GPIO.LOW)
+    GPIO.output("GPIO7", GPIO.LOW)
+    GPIO.output("GPIO8", GPIO.LOW)
+
 def init():
-    GPIO.setup(, GPIO.OUT)
-    GPIO.setup(BLED, GPIO.OUT)
+    GPIO.setup("GPIO1" GPIO.OUT)
+    GPIO.setup("GPIO2" GPIO.OUT)
+    GPIO.setup("GPIO3" GPIO.OUT)
+    GPIO.setup("GPIO4" GPIO.OUT)
+
+    GPIO.setup("GPIO5" GPIO.OUT)
+    GPIO.setup("GPIO6" GPIO.OUT)
+    GPIO.setup("GPIO7" GPIO.OUT)
+    GPIO.setup("GPIO8" GPIO.OUT)
+
+    GPIO.output("GPIO1", GPIO.LOW)
+    GPIO.output("GPIO2", GPIO.LOW)
+    GPIO.output("GPIO3", GPIO.LOW)
+    GPIO.output("GPIO4", GPIO.LOW)
+
+    GPIO.output("GPIO5", GPIO.LOW)
+    GPIO.output("GPIO6", GPIO.LOW)
+    GPIO.output("GPIO7", GPIO.LOW)
+    GPIO.output("GPIO8", GPIO.LOW)
+
 
 def forward(val):
     if not(val): val = 1 
     print "Going forward",val
+    lhs_fwd_on()
+    rhs_fwd_on()
+    sleep(1)
+    rhs_off()
+    lsh_off()
 
 def backward(val):
     if not(val): val = 1 
