@@ -70,10 +70,10 @@ def forward(val):
     if not(val): val = 1 
     print "Going forward",val
     lhs_fwd_on()
-    rhs_fwd_on()
+    #rhs_fwd_on()
     time.sleep(1)
     rhs_off()
-    lhs_off()
+    #lhs_off()
 
 def backward(val):
     if not(val): val = 1 
