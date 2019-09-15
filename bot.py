@@ -45,10 +45,10 @@ def all_off():
     GPIO.output("GPIO8", GPIO.LOW)
 
 def init():
-    #GPIO.setup("GPIO1" GPIO.OUT)
-    #GPIO.setup("GPIO2" GPIO.OUT)
-    #GPIO.setup("GPIO4" GPIO.OUT)
-    #GPIO.setup("GPIO3" GPIO.OUT)
+    GPIO.setup("GPIO1" GPIO.OUT)
+    GPIO.setup("GPIO2" GPIO.OUT)
+    GPIO.setup("GPIO4" GPIO.OUT)
+    GPIO.setup("GPIO3" GPIO.OUT)
 
     #GPIO.setup("GPIO5" GPIO.OUT)
     #GPIO.setup("GPIO6" GPIO.OUT)
