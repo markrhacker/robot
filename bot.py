@@ -15,65 +15,54 @@ def lhs_fwd_on():
     
 def rhs_back_on():
     GPIO.output("GPIO5", GPIO.LOW)
-    GPIO.output("GPIO7", GPIO.LOW)
-    
+ 
 def rhs_fwd_on():
     GPIO.output("GPIO6", GPIO.LOW)
-    GPIO.output("GPIO8", GPIO.LOW)
 
 def lhs_off():
     GPIO.output("GPIO1", GPIO.LOW)
     GPIO.output("GPIO2", GPIO.LOW)
-    GPIO.output("GPIO3", GPIO.LOW)
-    GPIO.output("GPIO4", GPIO.LOW)
 
 def rhs_off():
     GPIO.output("GPIO5", GPIO.LOW)
     GPIO.output("GPIO6", GPIO.LOW)
-    GPIO.output("GPIO7", GPIO.LOW)
-    GPIO.output("GPIO8", GPIO.LOW)  
 
 def all_off():
     GPIO.output("GPIO1", GPIO.LOW)
     GPIO.output("GPIO2", GPIO.LOW)
     GPIO.output("GPIO3", GPIO.LOW)
     GPIO.output("GPIO4", GPIO.LOW)
-
     GPIO.output("GPIO5", GPIO.LOW)
     GPIO.output("GPIO6", GPIO.LOW)
-    GPIO.output("GPIO7", GPIO.LOW)
-    GPIO.output("GPIO8", GPIO.LOW)
+
 
 def init():
     GPIO.setup("GPIO1",GPIO.OUT)
     GPIO.setup("GPIO2", GPIO.OUT)
     GPIO.setup("GPIO4", GPIO.OUT)
     GPIO.setup("GPIO3", GPIO.OUT)
-
     GPIO.setup("GPIO5", GPIO.OUT)
     GPIO.setup("GPIO6", GPIO.OUT)
-    #GPIO.setup("GPIO7", GPIO.OUT)
-    #GPIO.setup("GPIO8", GPIO.OUT)
 
-    GPIO.output("GPIO1", GPIO.LOW)
-    GPIO.output("GPIO2", GPIO.LOW)
-    #GPIO.output("GPIO3", GPIO.LOW)
-    #GPIO.output("GPIO4", GPIO.LOW)
 
-    GPIO.output("GPIO5", GPIO.LOW)
-    GPIO.output("GPIO6", GPIO.LOW)
-    #GPIO.output("GPIO7", GPIO.LOW)
-    #GPIO.output("GPIO8", GPIO.LOW)
+    GPIO.output("GPIO1", GPIO.HIGH)
+    GPIO.output("GPIO2", GPIO.HIGH)
+    GPIO.output("GPIO3", GPIO.HIGH)
+    GPIO.output("GPIO4", GPIO.HIGH)
+
+    GPIO.output("GPIO5", GPIO.HIGH)
+    GPIO.output("GPIO6", GPIO.HIGH)
+
 
 
 def forward(val):
     if not(val): val = 1 
     print "Going forward",val
     lhs_fwd_on()
-    #rhs_fwd_on()
-    time.sleep(1)
-    #rhs_off()
+    rhs_fwd_on()
+    time.sleep(1*val)
     lhs_off()
+    rhs_off()
 
 def backward(val):
     if not(val): val = 1 
@@ -94,15 +83,8 @@ def speed(val):
 class HelloWorld(cmd.Cmd):
     """Simple command processor example."""
     
-    def do_greet(self, person):
-        """greet [person]
-        Greet the named person"""
-        if person:
-            print "hi,", person
-        else:
-            print 'hi'
-    
     def do_fwd(self, line):
+        """Move Forward"""
         val =1
         if line=="":
             val=1
@@ -119,6 +101,7 @@ class HelloWorld(cmd.Cmd):
         forward(line)
 
     def do_back(self, line):
+        """Move back"""
         val =1
         if line=="":
             val=1
@@ -126,6 +109,7 @@ class HelloWorld(cmd.Cmd):
             val = int(line)
         backward(val)
     def do_b(self, line):
+        """Move back"""
         val =1
         if line=="":
             val=1
@@ -134,6 +118,7 @@ class HelloWorld(cmd.Cmd):
         backward(line)
 
     def do_right(self, line):
+        """Move right"""
         val =1
         if line=="":
             val=1
@@ -141,6 +126,7 @@ class HelloWorld(cmd.Cmd):
             val = int(line)
         right(val)
     def do_r(self, line):
+        """Move right"""
         val =1
         if line=="":
             val=1
@@ -149,6 +135,7 @@ class HelloWorld(cmd.Cmd):
         right(line)
 
     def do_left(self, line):
+        """Move left"""
         val =1
         if line=="":
             val=1
@@ -156,6 +143,7 @@ class HelloWorld(cmd.Cmd):
             val = int(line)
         left(val)
     def do_l(self, line):
+        """Move left"""
         val =1
         if line=="":
             val=1
@@ -164,6 +152,7 @@ class HelloWorld(cmd.Cmd):
         left(line)
         
     def do_pause(self, line):
+        """MPause"""
         val =1
         if line=="":
             val=1
@@ -171,6 +160,7 @@ class HelloWorld(cmd.Cmd):
             val = int(line)
         left(val)
     def do_p(self, line):
+        """Pause"""
         val =1
         if line=="":
             val=1
@@ -180,14 +170,15 @@ class HelloWorld(cmd.Cmd):
      
 
     def do_speed(self, line):
+        """Change speed"""
         val =1
         if line=="":
             val=1
         else:
             val = int(line)
         speed(line)
-
     def do_s(self, line):
+        """Change speed"""
         val =1
         if line=="":
             val=1
@@ -195,10 +186,17 @@ class HelloWorld(cmd.Cmd):
             val = int(line)
         speed(line)
     
+
+    def do_script(self, line):
+        """script"""
+        print "executing script"
+
     def do_quit(self, line):
+        """exit"""
         exit()
     
     def do_exit(self, line):
+        """exit"""
         exit()
     
     def postloop(self):
