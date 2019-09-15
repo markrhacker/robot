@@ -52,18 +52,18 @@ def init():
 
     GPIO.setup("GPIO5", GPIO.OUT)
     GPIO.setup("GPIO6", GPIO.OUT)
-    GPIO.setup("GPIO7", GPIO.OUT)
-    GPIO.setup("GPIO8", GPIO.OUT)
+    #GPIO.setup("GPIO7", GPIO.OUT)
+    #GPIO.setup("GPIO8", GPIO.OUT)
 
     GPIO.output("GPIO1", GPIO.LOW)
     GPIO.output("GPIO2", GPIO.LOW)
-    GPIO.output("GPIO3", GPIO.LOW)
-    GPIO.output("GPIO4", GPIO.LOW)
+    #GPIO.output("GPIO3", GPIO.LOW)
+    #GPIO.output("GPIO4", GPIO.LOW)
 
     GPIO.output("GPIO5", GPIO.LOW)
     GPIO.output("GPIO6", GPIO.LOW)
-    GPIO.output("GPIO7", GPIO.LOW)
-    GPIO.output("GPIO8", GPIO.LOW)
+    #GPIO.output("GPIO7", GPIO.LOW)
+    #GPIO.output("GPIO8", GPIO.LOW)
 
 
 def forward(val):
