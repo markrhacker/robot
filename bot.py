@@ -6,7 +6,8 @@ except ImportError:
     print "Needs to run on the CHIP"
 
 def init():
-    
+    GPIO.setup(, GPIO.OUT)
+    GPIO.setup(BLED, GPIO.OUT)
 
 def forward(val):
     if not(val): val = 1 
