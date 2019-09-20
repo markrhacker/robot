@@ -6,26 +6,26 @@ import CHIP_IO.GPIO as GPIO
 
 #motors
 def lhs_back_on():
+    GPIO.output("GPIO1", GPIO.HIGH)
     GPIO.output("GPIO2", GPIO.HIGH)
-    GPIO.output("GPIO4", GPIO.HIGH)
+    GPIO.output("GPIO3", GPIO.HIGH)
 
 def lhs_fwd_on():
-    GPIO.output("GPIO1", GPIO.HIGH)
     GPIO.output("GPIO3", GPIO.HIGH)
     
 def rhs_back_on():
-    GPIO.output("GPIO5", GPIO.LOW)
+    GPIO.output("GPIO4", GPIO.HIGH)
+    GPIO.output("GPIO5", GPIO.HIGH)
+    GPIO.output("GPIO6", GPIO.HIGH)
  
 def rhs_fwd_on():
     GPIO.output("GPIO6", GPIO.LOW)
 
 def lhs_off():
-    GPIO.output("GPIO1", GPIO.LOW)
-    GPIO.output("GPIO2", GPIO.LOW)
+    GPIO.output("GPIO3", GPIO.HIGHT)
 
 def rhs_off():
-    GPIO.output("GPIO5", GPIO.LOW)
-    GPIO.output("GPIO6", GPIO.LOW)
+    GPIO.output("GPIO6", GPIO.HIGH)
 
 def all_off():
     GPIO.output("GPIO1", GPIO.LOW)
@@ -36,7 +36,7 @@ def all_off():
     GPIO.output("GPIO6", GPIO.LOW)
 
 def init():
-    GPIO.setup("GPIO1",GPIO.OUT)
+    GPIO.setup("GPIO1", GPIO.OUT)
     GPIO.setup("GPIO2", GPIO.OUT)
     GPIO.setup("GPIO4", GPIO.OUT)
     GPIO.setup("GPIO3", GPIO.OUT)
