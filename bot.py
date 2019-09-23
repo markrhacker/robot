@@ -11,7 +11,7 @@ def lhs_back_on():
     GPIO.output("GPIO3", GPIO.HIGH)
 
 def lhs_fwd_on():
-    GPIO.output("GPIO3", GPIO.HIGH)
+    GPIO.output("GPIO3", GPIO.LOW)
     
 def rhs_back_on():
     GPIO.output("GPIO4", GPIO.HIGH)
