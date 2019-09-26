@@ -18,7 +18,7 @@ class bcolors:
     UNDERLINE = '\033[4m'
 #################################################################
 
-STEPTIME = 0.5
+global STEPTIME = 0.5
 
 #motors
 def lhs_back_on():
@@ -192,6 +192,7 @@ class HelloWorld(cmd.Cmd):
         else:
             val = int(line)
         left(val)
+
     def do_p(self, line):
         """Pause"""
         val =1
@@ -202,22 +203,26 @@ class HelloWorld(cmd.Cmd):
         left(line)
      
 
-    def do_speed(self, line):
-        """Change speed"""
+    def do_step(self, line):
+        """Change step"""
+        global STEPTIME
         val =1
         if line=="":
             val=1
         else:
-            val = int(line)
-        speed(line)
+            val = line
+        STEPTIME=val
+
     def do_s(self, line):
-        """Change speed"""
+        """Change step"""
+        global STEPTIME
         val =1
         if line=="":
             val=1
         else:
-            val = int(line)
-        speed(line)
+            val = line
+        STEPTIME=val
+        
     
 
     def do_script(self, line):
