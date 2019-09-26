@@ -18,7 +18,8 @@ class bcolors:
     UNDERLINE = '\033[4m'
 #################################################################
 
-global STEPTIME = 0.5
+global STEPTIME
+STEPTIME = 0.5
 
 #motors
 def lhs_back_on():
