@@ -127,7 +127,7 @@ class HelloWorld(cmd.Cmd):
         if line=="":
             val=1
         else:
-            val = int(line)
+            val = float(line)
         forward(val)
     def do_f(self, line):
         """Move Forward"""
@@ -135,7 +135,7 @@ class HelloWorld(cmd.Cmd):
         if line=="":
             val=1
         else:
-            val = int(line)
+            val = float(line)
         forward(line)
 
     def do_back(self, line):
@@ -144,7 +144,7 @@ class HelloWorld(cmd.Cmd):
         if line=="":
             val=1
         else:
-            val = int(line)
+            val = float(line)
         backward(val)
     def do_b(self, line):
         """Move back"""
@@ -152,7 +152,7 @@ class HelloWorld(cmd.Cmd):
         if line=="":
             val=1
         else:
-            val = int(line)
+            val = float(line)
         backward(line)
 
     def do_right(self, line):
@@ -161,7 +161,7 @@ class HelloWorld(cmd.Cmd):
         if line=="":
             val=1
         else:
-            val = int(line)
+            val = float(line)
         right(val)
     def do_r(self, line):
         """Move right"""
@@ -169,7 +169,7 @@ class HelloWorld(cmd.Cmd):
         if line=="":
             val=1
         else:
-            val = int(line)
+            val = float(line)
         right(line)
 
     def do_left(self, line):
@@ -178,7 +178,7 @@ class HelloWorld(cmd.Cmd):
         if line=="":
             val=1
         else:
-            val = int(line)
+            val = float(line)
         left(val)
     def do_l(self, line):
         """Move left"""
@@ -186,7 +186,7 @@ class HelloWorld(cmd.Cmd):
         if line=="":
             val=1
         else:
-            val = int(line)
+            val = float(line)
         left(line)
         
     def do_pause(self, line):
@@ -195,8 +195,8 @@ class HelloWorld(cmd.Cmd):
         if line=="":
             val=1
         else:
-            val = int(line)
-        left(val)
+            val = float(line)
+        #left(val)
 
     def do_p(self, line):
         """Pause"""
@@ -204,8 +204,8 @@ class HelloWorld(cmd.Cmd):
         if line=="":
             val=1
         else:
-            val = int(line)
-        left(line)
+            val = float(line)
+        #left(line)
      
 
     def do_step(self, line):
