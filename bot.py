@@ -4,6 +4,8 @@ import time
 
 import CHIP_IO.GPIO as GPIO
 
+STEPTIME = 0.5
+
 #motors
 def lhs_back_on():
     GPIO.output("GPIO1", GPIO.HIGH)
@@ -58,21 +60,36 @@ def forward(val):
     print "Going forward",val
     lhs_fwd_on()
     rhs_fwd_on()
-    time.sleep(1*val)
+    time.sleep(STEPTIME*val)
     lhs_off()
     rhs_off()
 
 def backward(val):
     if not(val): val = 1 
     print "Going backward",val
+    lhs_back_on()
+    rhs_back_on()
+    time.sleep(STEPTIME*val)
+    lhs_off()
+    rhs_off()
 
 def left(val):
     if not(val): val = 1 
     print "Going left",val
+    lhs_back_on()
+    rhs_fwd_on()
+    time.sleep(STEPTIME*val)
+    lhs_off()
+    rhs_off()
 
 def right(val):
     if not(val): val = 1 
     print "Going right",val
+    lhs_fwd_on()
+    rhs_back_on()
+    time.sleep(STEPTIME*val)
+    lhs_off()
+    rhs_off()
 
 def speed(val):
     if not(val): val = 1 
