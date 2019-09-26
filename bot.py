@@ -211,7 +211,7 @@ class HelloWorld(cmd.Cmd):
         if line=="":
             val=1
         else:
-            val = line
+            val = float(line)
         STEPTIME=val
 
     def do_s(self, line):
@@ -221,7 +221,7 @@ class HelloWorld(cmd.Cmd):
         if line=="":
             val=1
         else:
-            val = line
+            val = float(line)
         STEPTIME=val
         
     
