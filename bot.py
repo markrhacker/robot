@@ -19,7 +19,7 @@ class bcolors:
 #################################################################
 
 global STEPTIME
-STEPTIME = 0.5
+STEPTIME = 1
 
 #motors
 def lhs_back_on():
