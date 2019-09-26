@@ -38,9 +38,13 @@ def rhs_fwd_on():
     GPIO.output("GPIO6", GPIO.LOW)
 
 def lhs_off():
+    GPIO.output("GPIO1", GPIO.HIGH)
+    GPIO.output("GPIO2", GPIO.HIGH)
     GPIO.output("GPIO3", GPIO.HIGH)
 
 def rhs_off():
+    GPIO.output("GPIO4", GPIO.HIGH)
+    GPIO.output("GPIO5", GPIO.HIGH)
     GPIO.output("GPIO6", GPIO.HIGH)
 
 def all_off():
