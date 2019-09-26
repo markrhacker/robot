@@ -79,6 +79,7 @@ def forward(val):
     print "Going forward",val
     lhs_fwd_on()
     rhs_fwd_on()
+    print STEPTIME, val
     time.sleep(STEPTIME*val)
     lhs_off()
     rhs_off()
