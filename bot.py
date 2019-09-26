@@ -89,7 +89,7 @@ def backward(val):
     print "Going backward",val
     lhs_back_on()
     rhs_back_on()
-    time.sleep(STEPTIME*val)
+    time.sleep(STEPTIME*float(val))
     lhs_off()
     rhs_off()
 
@@ -98,7 +98,7 @@ def left(val):
     print "Going left",val
     lhs_back_on()
     rhs_fwd_on()
-    time.sleep(STEPTIME*val)
+    time.sleep(STEPTIME*float(val))
     lhs_off()
     rhs_off()
 
@@ -107,7 +107,7 @@ def right(val):
     print "Going right",val
     lhs_fwd_on()
     rhs_back_on()
-    time.sleep(STEPTIME*val)
+    time.sleep(STEPTIME*float(val))
     lhs_off()
     rhs_off()
 
