@@ -75,8 +75,7 @@ def init():
 
 
 def forward(val):
-    global STEPTIME
-    if not(val): val = 1 
+    if not(val): val = 1.0 
     print "Going forward",val
     lhs_fwd_on()
     rhs_fwd_on()
@@ -85,8 +84,7 @@ def forward(val):
     rhs_off()
 
 def backward(val):
-    global STEPTIME
-    if not(val): val = 1 
+    if not(val): val = 1.0 
     print "Going backward",val
     lhs_back_on()
     rhs_back_on()
@@ -95,8 +93,7 @@ def backward(val):
     rhs_off()
 
 def left(val):
-    global STEPTIME
-    if not(val): val = 1 
+    if not(val): val = 1.0 
     print "Going left",val
     lhs_back_on()
     rhs_fwd_on()
@@ -105,7 +102,6 @@ def left(val):
     rhs_off()
 
 def right(val):
-    global STEPTIME
     if not(val): val = 1 
     print "Going right",val
     lhs_fwd_on()
