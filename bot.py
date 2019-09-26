@@ -22,17 +22,17 @@ STEPTIME = 0.5
 
 #motors
 def lhs_back_on():
-    GPIO.output("GPIO1", GPIO.HIGH)
-    GPIO.output("GPIO2", GPIO.HIGH)
-    GPIO.output("GPIO3", GPIO.HIGH)
+    GPIO.output("GPIO1", GPIO.LOW)
+    GPIO.output("GPIO2", GPIO.LOW)
+    GPIO.output("GPIO3", GPIO.LOW)
 
 def lhs_fwd_on():
     GPIO.output("GPIO3", GPIO.LOW)
     
 def rhs_back_on():
-    GPIO.output("GPIO4", GPIO.HIGH)
-    GPIO.output("GPIO5", GPIO.HIGH)
-    GPIO.output("GPIO6", GPIO.HIGH)
+    GPIO.output("GPIO4", GPIO.LOW)
+    GPIO.output("GPIO5", GPIO.LOW)
+    GPIO.output("GPIO6", GPIO.LOW)
  
 def rhs_fwd_on():
     GPIO.output("GPIO6", GPIO.LOW)
@@ -219,7 +219,6 @@ class HelloWorld(cmd.Cmd):
     def do_script(self, line):
         """script"""
         print "executing script"
-
         my_file = Path(line)
         if my_file.is_file():
             print(bcolors.OKGREEN+"Running script"+ bcolors.ENDC)
