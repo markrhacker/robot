@@ -1,8 +1,22 @@
 import cmd
 import os
 import time
+import pathlib
 
 import CHIP_IO.GPIO as GPIO
+
+
+#################################################################
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+#################################################################
 
 STEPTIME = 0.5
 
@@ -205,6 +219,15 @@ class HelloWorld(cmd.Cmd):
     def do_script(self, line):
         """script"""
         print "executing script"
+
+        my_file = Path(line)
+        if my_file.is_file():
+            print(bcolors.OKGREEN+"Running script"+ bcolors.ENDC)
+        else:
+            print(bcolors.WARNING+"File not found"+ bcolors.ENDC)
+            return
+        with open(line) as f:
+            self.cmdqueue.extend(f.read().splitlines())
 
     def do_quit(self, line):
         """exit"""
