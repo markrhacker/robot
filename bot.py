@@ -1,7 +1,7 @@
 import cmd
 import os
 import time
-import pathlib
+from pathlib import Path
 
 import CHIP_IO.GPIO as GPIO
 
