@@ -56,7 +56,7 @@ def all_off():
     GPIO.output("GPIO5", GPIO.LOW)
     GPIO.output("GPIO6", GPIO.LOW)
 
-def init():
+def motorinit():
     GPIO.setup("GPIO1", GPIO.OUT)
     GPIO.setup("GPIO2", GPIO.OUT)
     GPIO.setup("GPIO4", GPIO.OUT)
@@ -71,7 +71,6 @@ def init():
     GPIO.output("GPIO4", GPIO.HIGH)
     GPIO.output("GPIO5", GPIO.HIGH)
     GPIO.output("GPIO6", GPIO.HIGH)
-
 
 
 def forward(val):
@@ -251,6 +250,6 @@ class HelloWorld(cmd.Cmd):
         print
 
 if __name__ == '__main__':
-    init()
+    motorinit()
     HelloWorld().cmdloop()
     

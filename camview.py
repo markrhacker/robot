@@ -28,12 +28,7 @@ while(True):
 
     #---- analysis imagee ----
     print ("Analysising...")
-<<<<<<< HEAD
-    #img1 = cv2.imread('box.png',0)          # queryImage
-    img2 = cv2.imread('cam.jpg',1) # trainImage
-=======
     img2 = cv2.imread('cam.jpg',cv2.IMREAD_COLOR) 
->>>>>>> 28d1a74c4fa297b2243444b381d186a8d7a4f6dd
     img2 = cv2.resize(img2, (256, 256)) 
     # -----------------
 
