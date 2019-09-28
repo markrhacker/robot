@@ -72,6 +72,8 @@ def motorinit():
     GPIO.output("GPIO5", GPIO.HIGH)
     GPIO.output("GPIO6", GPIO.HIGH)
 
+def caminit():
+    print "Cam init"
 
 def forward(val):
     if not(val): val = 1.0 
@@ -250,6 +252,11 @@ class HelloWorld(cmd.Cmd):
         print
 
 if __name__ == '__main__':
+    
+    #motor init
     motorinit()
+    caminit()
+
+    #command loop
     HelloWorld().cmdloop()
     
