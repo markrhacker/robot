@@ -2,11 +2,20 @@
 import bimpy
 from PIL import Image
 
+#################################################
+#init
 ctx = bimpy.Context()
-
 ctx.init(800, 800, "Image")
 
-image = Image.open("test.png")
+#################################################
+#get image
+
+
+
+
+##################################################
+#view image
+image = Image.open("cam.jpg")
 
 im = bimpy.Image(image)
 
