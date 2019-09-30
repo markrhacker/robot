@@ -15,3 +15,4 @@ while(not ctx.should_close()):
         bimpy.text("Display PIL Image")
 
         bimpy.image(im)
+
