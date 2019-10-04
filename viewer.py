@@ -24,6 +24,8 @@ image = image.resize((640,350), Image.ANTIALIAS)
 #view image
 
 
+##################################################
+#UI
 im = bimpy.Image(image)
 
 while(not ctx.should_close()):
