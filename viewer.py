@@ -55,7 +55,7 @@ while(not ctx.should_close()):
 
 
         bimpy.begin("Console")
-        bimpy.text("Image read"+str(f1.value))
+        bimpy.text("Image read:"+str(f1.value)+str(f2.value)+str(f3.value))
         bimpy.end()
 
 
