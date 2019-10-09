@@ -17,7 +17,7 @@ pil_image = pil_image.resize((640,350), Image.ANTIALIAS)
 #MacOS
 #brew install 
 #imagesnap -w 2 cam.jpg
-#Linux
+#LINUX
 #sudo apt-get install fswebcam
 #fswebcam -r 1280x1024 --line-colour '#FF000000' --banner-colour '#FF000000' -F 10 cam.jpg
 
@@ -54,7 +54,6 @@ while(not ctx.should_close()):
         bimpy.slider_float3("float3", f1, f2, f3, 0.0, 1.0)  
 
         bimpy.end()
-
 
         bimpy.begin("Console")
         bimpy.text("Image read:"+str(f1.value)+str(f2.value)+str(f3.value))
