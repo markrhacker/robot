@@ -108,11 +108,26 @@ y1 = int(height/2)
 x2 = int(width)
 y2 = int(height/2)
 cv2.line(image, (x1, y1), (x2, y2), (0,255,0), lineThickness)
-camx = int(height/2)
-camy = int(width/2)
+camx = int(width/2)
+camy = int(height/2)
 
 #vector
+x1 = camx
+y1 = camy
+x2 = headx
+y2 = heady
+cv2.line(image, (x1, y1), (x2, y2), (0,0,255), lineThickness)
 
+x1 = headx
+y1 = heady
+x2 = headx+50
+y2 = heady+50
+cv2.line(image, (x1, y1), (x2, y2), (0,0,255), lineThickness)
+x1 = headx
+y1 = heady
+x2 = headx-50
+y2 = heady-50
+cv2.line(image, (x1, y1), (x2, y2), (0,0,255), lineThickness)
 
 ##################################################
 #UI
