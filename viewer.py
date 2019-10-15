@@ -116,7 +116,7 @@ x1 = camx
 y1 = camy
 x2 = headx
 y2 = heady
-cv2.line(image, (x1, y1), (x2, y2), (0,0,255), lineThickness)
+cv2.arrowedLine(image, (x1, y1), (x2, y2), (0,0,255), lineThickness)
 
 x1 = headx
 y1 = heady
