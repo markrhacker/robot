@@ -70,7 +70,7 @@ def WebCamInit():
 
 def TakeWebCamIamge():
     print("click!")
-    os.system("imagesnap -w 2 cam.jpg")
+    os.system("imagesnap -w 2 /Users/markhacker/Desktop/robot/cam.jpg")
 
 TakeWebCamIamge()
 
