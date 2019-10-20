@@ -149,8 +149,9 @@ def DrawHUD(image,width,height,headx,heady):
     dirvecy = camy - heady
     dirvecxnorm = dirvecx/width
     dirvecynorm = dirvecy/height
-    dirvecmag = math.sqrt(dirvecx*dirvecx+dirvecy+dirvecy)/math.sqrt(width*width+height+height)
-    dirvecmagnorm = math.sqrt(dirvecx*dirvecx+dirvecy+dirvecy)
+    print(dirvecx,dirvecy,dirvecxnorm,dirvecynorm)
+    dirvecmag = math.sqrt(abs(dirvecx)*abs(dirvecx)+abs(dirvecy)+abs(dirvecy))/math.sqrt(width*width+height+height)
+    dirvecmagnorm = math.sqrt(abs(dirvecx)*abs(dirvecx)+abs(dirvecy)+abs(dirvecy))
     return dirvecx,dirvecy,dirvecxnorm,dirvecynorm,dirvecmag,dirvecmagnorm
 
 dirvecx,dirvecy,dirvecxnorm,dirvecynorm,dirvecmag,dirvecmagnorm =DrawHUD(image,width,height,headx,heady)
