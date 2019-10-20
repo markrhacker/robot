@@ -6,6 +6,7 @@ import cv2
 import numpy
 import socket
 import time
+import math
 
 
 class SensorStreamingTest(object):
@@ -64,71 +65,98 @@ ctx.init(700, 800, "Image")
 ##################################################
 #look for face
 
-image = cv2.imread("/Users/markhacker/Desktop/robot/cam.jpg")
-height, width = image.shape[:2]
-width = int(width/1.4)
-height = int(height/1.4)
-image = cv2.resize(image, (width, height), interpolation = cv2.INTER_AREA)
-cascPath = "/Users/markhacker/Desktop/robot/haarcascade_frontalface_default.xml"
-gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-faceCascade = cv2.CascadeClassifier(cascPath)
+def WebCamInit():
+    print("Warming up cam")
 
-# Detect faces in the image
-faces = faceCascade.detectMultiScale(gray, 1.1, 4)
+def TakeWebCamIamge():
+    print("click!")
+    os.system("imagesnap -w 2 cam.jpg")
 
-print("Found {0} faces!".format(len(faces)))
+TakeWebCamIamge()
 
-for (x, y, w, h) in faces:
-    print(x,y,w,h)
-    facestr= str(x)+' '+str(y)+' '+str(w)+' '+str(h)
-    lineThickness = 1
-    cv2.rectangle(image, (x, y), (x+w, y+h), (255, 0, 0), lineThickness)
-    x1 = int(x+(w/2))
-    y1 = y 
-    x2 = int(x+(w/2))
-    y2 = int(y+h)
-    cv2.line(image, (x1, y1), (x2, y2), (255,0,0), lineThickness)
-    x1 = x
-    y1 = int(y+h/2)
-    x2 = int(x+w)
-    y2 = int(y+h/2)
-    cv2.line(image, (x1, y1), (x2, y2), (255,0,0), lineThickness)   
-    headx = int(x+w/2)
-    heady = int(y+h/2)
+def getCamImage():
+    image = cv2.imread("/Users/markhacker/Desktop/robot/cam.jpg")
+    height, width = image.shape[:2]
+    width = int(width/1.4)
+    height = int(height/1.4)
+    image = cv2.resize(image, (width, height), interpolation = cv2.INTER_AREA)
+    return image, width, height
 
-#hud
-lineThickness = 6
-x1 = int(width/2)
-y1 = 0 
-x2 = int(width/2)
-y2 = int(height)
-cv2.line(image, (x1, y1), (x2, y2), (0,255,0), lineThickness)
-x1 = 0
-y1 = int(height/2)
-x2 = int(width)
-y2 = int(height/2)
-cv2.line(image, (x1, y1), (x2, y2), (0,255,0), lineThickness)
-camx = int(width/2)
-camy = int(height/2)
+image, width, height = getCamImage()
 
-#vector
-x1 = camx
-y1 = camy
-x2 = headx
-y2 = heady
-cv2.arrowedLine(image, (x1, y1), (x2, y2), (0,0,255), lineThickness)
+def DetectFace(image):
+    cascPath = "/Users/markhacker/Desktop/robot/haarcascade_frontalface_default.xml"
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    faceCascade = cv2.CascadeClassifier(cascPath)
 
-x1 = headx
-y1 = heady
-x2 = headx+50
-y2 = heady+50
-cv2.line(image, (x1, y1), (x2, y2), (0,0,255), lineThickness)
-x1 = headx
-y1 = heady
-x2 = headx-50
-y2 = heady-50
-cv2.line(image, (x1, y1), (x2, y2), (0,0,255), lineThickness)
+    # Detect faces in the image
+    faces = faceCascade.detectMultiScale(gray, 1.1, 4)
 
+    print("Found {0} faces!".format(len(faces)))
+
+    return faces
+
+faces = DetectFace(image)
+
+def DrawFaces(image,faces):
+    #HACK FIND LARGED w x h face
+    for (x, y, w, h) in faces:
+        print(x,y,w,h)
+        facestr= str(x)+' '+str(y)+' '+str(w)+' '+str(h)
+        lineThickness = 1
+        cv2.rectangle(image, (x, y), (x+w, y+h), (255, 0, 0), lineThickness)
+        x1 = int(x+(w/2))
+        y1 = y 
+        x2 = int(x+(w/2))
+        y2 = int(y+h)
+        cv2.line(image, (x1, y1), (x2, y2), (255,0,0), lineThickness)
+        x1 = x
+        y1 = int(y+h/2)
+        x2 = int(x+w)
+        y2 = int(y+h/2)
+        cv2.line(image, (x1, y1), (x2, y2), (255,0,0), lineThickness)   
+        headx = int(x+w/2)
+        heady = int(y+h/2)
+
+        return facestr,headx,heady
+
+facestr,headx,heady = DrawFaces(image,faces)
+
+def DrawHUD(image,width,height,headx,heady):
+    #hud
+    lineThickness = 6
+    x1 = int(width/2)
+    y1 = 0 
+    x2 = int(width/2)
+    y2 = int(height)
+    cv2.line(image, (x1, y1), (x2, y2), (0,255,0), lineThickness)
+    x1 = 0
+    y1 = int(height/2)
+    x2 = int(width)
+    y2 = int(height/2)
+    cv2.line(image, (x1, y1), (x2, y2), (0,255,0), lineThickness)
+    camx = int(width/2)
+    camy = int(height/2)
+
+    #vector
+    x1 = camx
+    y1 = camy
+    x2 = headx
+    y2 = heady
+    cv2.arrowedLine(image, (x1, y1), (x2, y2), (0,0,255), lineThickness)
+
+    dirvecx = camx - headx
+    dirvecy = camy - heady
+    dirvecxnorm = dirvecx/width
+    dirvecynorm = dirvecy/height
+    dirvecmag = math.sqrt(dirvecx*dirvecx+dirvecy+dirvecy)/math.sqrt(width*width+height+height)
+    dirvecmagnorm = math.sqrt(dirvecx*dirvecx+dirvecy+dirvecy)
+    return dirvecx,dirvecy,dirvecxnorm,dirvecynorm,dirvecmag,dirvecmagnorm
+
+dirvecx,dirvecy,dirvecxnorm,dirvecynorm,dirvecmag,dirvecmagnorm =DrawHUD(image,width,height,headx,heady)
+
+#if (dirvecx<0):
+        
 ##################################################
 #UI
 im = bimpy.Image(image)
@@ -146,7 +174,11 @@ while(not ctx.should_close()):
         bimpy.begin("Analysis")
         bimpy.text("Hello, world!")
 
-        bimpy.slider_float3("float3", f1, f2, f3, 0.0, 1.0)  
+        f1.value = abs(dirvecxnorm)
+        f2.value = abs(dirvecynorm)
+        f3.value = abs(dirvecmag)
+
+        bimpy.slider_float3("Face Vector", f1, f2, f3, 0.0, 1.0)  
 
         bimpy.end()
 
@@ -154,6 +186,8 @@ while(not ctx.should_close()):
         bimpy.text("Image read:"+str(f1.value)+str(f2.value)+str(f3.value))
         bimpy.text("Found {0} faces!".format(len(faces)))
         bimpy.text(facestr)
+        bimpy.text("Direction vector:"+str(dirvecx)+' '+str(dirvecy)+' '+str(dirvecmag))
+
         #for (x, y, w, h) in faces:
         
             #cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
