@@ -116,6 +116,9 @@ def speed(val):
     if not(val): val = 1 
     print "speed setting ",val
 
+def serverInit():
+    print("Starting server")
+
 class HelloWorld(cmd.Cmd):
     """Simple command processor example."""
     
@@ -135,7 +138,6 @@ class HelloWorld(cmd.Cmd):
         else:
             val = float(line)
         forward(line)
-
     def do_back(self, line):
         """Move back"""
         val =1
@@ -152,7 +154,6 @@ class HelloWorld(cmd.Cmd):
         else:
             val = float(line)
         backward(line)
-
     def do_right(self, line):
         """Move right"""
         val =1
@@ -169,7 +170,6 @@ class HelloWorld(cmd.Cmd):
         else:
             val = float(line)
         right(line)
-
     def do_left(self, line):
         """Move left"""
         val =1
@@ -185,8 +185,7 @@ class HelloWorld(cmd.Cmd):
             val=1
         else:
             val = float(line)
-        left(line)
-        
+        left(line)  
     def do_pause(self, line):
         """MPause"""
         val =1
@@ -195,7 +194,6 @@ class HelloWorld(cmd.Cmd):
         else:
             val = float(line)
         #left(val)
-
     def do_p(self, line):
         """Pause"""
         val =1
@@ -204,8 +202,6 @@ class HelloWorld(cmd.Cmd):
         else:
             val = float(line)
         #left(line)
-     
-
     def do_step(self, line):
         """Change step"""
         global STEPTIME
@@ -215,7 +211,6 @@ class HelloWorld(cmd.Cmd):
         else:
             val = float(line)
         STEPTIME=val
-
     def do_s(self, line):
         """Change step"""
         global STEPTIME
@@ -225,9 +220,6 @@ class HelloWorld(cmd.Cmd):
         else:
             val = float(line)
         STEPTIME=val
-        
-    
-
     def do_script(self, line):
         """script"""
         print "executing script"
@@ -239,7 +231,9 @@ class HelloWorld(cmd.Cmd):
             return
         with open(line) as f:
             self.cmdqueue.extend(f.read().splitlines())
-
+    def do_server(self, line):
+        """Server"""
+        serverInit()  
     def do_quit(self, line):
         """exit"""
         exit()
