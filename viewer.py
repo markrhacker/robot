@@ -37,13 +37,9 @@ ctx.init(700, 800, "Image")
 def WebCamInit():
     print("Warming up cam")
 
-WebCamInit()
-
 def TakeWebCamIamge():
     print("click!")
     os.system("imagesnap -w 2 /Users/markhacker/Desktop/robot/cam.jpg")
-
-TakeWebCamIamge()
 
 def getCamImage():
     image = cv2.imread("/Users/markhacker/Desktop/robot/cam.jpg")
@@ -53,7 +49,6 @@ def getCamImage():
     image = cv2.resize(image, (width, height), interpolation = cv2.INTER_AREA)
     return image, width, height
 
-image, width, height = getCamImage()
 
 def DetectFace(image):
     cascPath = "/Users/markhacker/Desktop/robot/haarcascade_frontalface_default.xml"
@@ -67,7 +62,6 @@ def DetectFace(image):
 
     return faces
 
-faces = DetectFace(image)
 
 def DrawFaces(image,faces):
     #HACK FIND LARGED w x h face
@@ -90,8 +84,6 @@ def DrawFaces(image,faces):
         heady = int(y+h/2)
 
         return facestr,headx,heady
-
-facestr,headx,heady = DrawFaces(image,faces)
 
 def DrawHUD(image,width,height,headx,heady):
     #hud
@@ -125,7 +117,14 @@ def DrawHUD(image,width,height,headx,heady):
     dirvecmagnorm = math.sqrt(abs(dirvecx)*abs(dirvecx)+abs(dirvecy)+abs(dirvecy))
     return dirvecx,dirvecy,dirvecxnorm,dirvecynorm,dirvecmag,dirvecmagnorm
 
+
+WebCamInit()
+TakeWebCamIamge()
+image, width, height = getCamImage()
+faces = DetectFace(image)
+facestr,headx,heady = DrawFaces(image,faces)
 dirvecx,dirvecy,dirvecxnorm,dirvecynorm,dirvecmag,dirvecmagnorm =DrawHUD(image,width,height,headx,heady)
+
 
 #if (dirvecx<0):
         
