@@ -49,7 +49,6 @@ def getCamImage():
     image = cv2.resize(image, (width, height), interpolation = cv2.INTER_AREA)
     return image, width, height
 
-
 def DetectFace(image):
     cascPath = "/Users/markhacker/Desktop/robot/haarcascade_frontalface_default.xml"
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -61,7 +60,6 @@ def DetectFace(image):
     print("Found {0} faces!".format(len(faces)))
 
     return faces
-
 
 def DrawFaces(image,faces):
     #HACK FIND LARGED w x h face
@@ -121,10 +119,12 @@ def DrawHUD(image,width,height,headx,heady):
 WebCamInit()
 TakeWebCamIamge()
 image, width, height = getCamImage()
-faces = DetectFace(image)
-facestr,headx,heady = DrawFaces(image,faces)
-dirvecx,dirvecy,dirvecxnorm,dirvecynorm,dirvecmag,dirvecmagnorm =DrawHUD(image,width,height,headx,heady)
-
+dirvecx = 0
+dirvecy =0
+dirvecxnorm=0
+dirvecynorm=0
+dirvecmag=0
+dirvecmagnorm=0
 
 #if (dirvecx<0):
         
@@ -138,6 +138,14 @@ f3 = bimpy.Float();
 
 while(not ctx.should_close()):
     with ctx:
+        TakeWebCamIamge()
+        image, width, height = getCamImage()
+        faces = DetectFace(image)
+        if (len(faces)>0):
+            facestr,headx,heady = DrawFaces(image,faces)
+            dirvecx,dirvecy,dirvecxnorm,dirvecynorm,dirvecmag,dirvecmagnorm=DrawHUD(image,width,height,headx,heady)
+
+        im = bimpy.Image(image)
         bimpy.begin("Image")
         bimpy.image(im)
         bimpy.end()
