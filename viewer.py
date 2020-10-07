@@ -52,6 +52,7 @@ def getCamImage():
 def DetectFace(image):
     cascPath = "/Users/markhacker/Desktop/robot/haarcascade_frontalface_default.xml"
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    
     faceCascade = cv2.CascadeClassifier(cascPath)
 
     # Detect faces in the image
@@ -135,6 +136,8 @@ im = bimpy.Image(image)
 f1 = bimpy.Float();
 f2 = bimpy.Float();
 f3 = bimpy.Float();
+
+facestr =""
 
 while(not ctx.should_close()):
     with ctx:
